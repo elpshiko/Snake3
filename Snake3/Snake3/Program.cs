@@ -16,6 +16,11 @@ namespace Snake3
             Point p2 = new Point(4, 5, '#');
             p2.Draw();
 
+            HorizontalLine hline = new HorizontalLine(3, 15, 3, '&');
+            hline.Draw();
+            VerticalLine vline = new VerticalLine(5, 12, 2, '*');
+            vline.Draw();
+
             Console.ReadLine();
         }
     }
