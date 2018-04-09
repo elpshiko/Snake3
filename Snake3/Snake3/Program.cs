@@ -35,15 +35,32 @@ namespace Snake3
             snake.Draw();
             //Console.ReadLine();
 
+            //Появление еды
+            FoodCreator foodCreator = new FoodCreator(80, 25, '@');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+
+                Thread.Sleep(100);
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.Handlekey(key.Key);
                 }
-                Thread.Sleep(100);
-                snake.Move();
+                //Thread.Sleep(100);
+                //snake.Move();
             }
         }
     }
